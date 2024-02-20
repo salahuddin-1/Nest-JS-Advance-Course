@@ -1,2 +1,3 @@
-export * from './common.module';
-export * from './common.service';
+// From here i'm exporting the whole directory of database
+
+export * from './database';
