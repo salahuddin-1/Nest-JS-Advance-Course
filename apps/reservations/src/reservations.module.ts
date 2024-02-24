@@ -8,6 +8,7 @@ import {
   ReservationSchema,
 } from './models/reservation.schema';
 import { ModelDefinition } from '@nestjs/mongoose';
+import { LoggerModule } from '@app/common';
 
 const reservationModel: ModelDefinition = {
   name: ReservationDocument.name,
@@ -15,7 +16,11 @@ const reservationModel: ModelDefinition = {
 };
 
 @Module({
-  imports: [DatabaseModule, DatabaseModule.forFeature([reservationModel])],
+  imports: [
+    DatabaseModule,
+    DatabaseModule.forFeature([reservationModel]),
+    LoggerModule,
+  ],
   controllers: [ReservationsController],
   providers: [ReservationsService, ReservationsRepository],
 })
