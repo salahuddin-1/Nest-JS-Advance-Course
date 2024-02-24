@@ -7,7 +7,13 @@ async function bootstrap() {
   const app = await NestFactory.create(ReservationsModule);
 
   // Enable validation pipe
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      // If from the client side, the client sends a field that is not in the DTO,
+      // it will automatically strip it out
+      whitelist: true,
+    }),
+  );
 
   // Enable Pinologger
   app.useLogger(app.get(Logger));
