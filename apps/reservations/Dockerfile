@@ -80,3 +80,5 @@ CMD [ "node", "dist/apps/reservations/main" ]
 
 # Run this command from inside the apps/reservations directory to build the image
 # docker build ../../ -f Dockerfile -t sleepr_reservations
+# ../../ -> means go back two directories from the current directory 
+# i.e. the root directory of the project and run the command from there
