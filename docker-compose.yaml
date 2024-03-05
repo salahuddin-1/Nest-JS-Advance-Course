@@ -11,7 +11,17 @@ services:
       # This line creates a bind mount volume, which links the current directory to the /usr/src/app directory 
       # in the container. This means that any changes made to the files in the current directory will be reflected
       # in the container, and vice versa in real time.
-      - .:/usr/src/app 
+      - .:/usr/src/app
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development 
+    command: pnpm run start:dev auth
+    ports:
+      - '3001:3001' # [host_port]:[container_port]
+    volumes:
+      - .:/usr/src/app
   mongo:
     image: mongo
   
